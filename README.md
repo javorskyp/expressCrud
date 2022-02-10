@@ -1,3 +1,4 @@
 # Crud App with JWT and Express.
-npm install
-npm run server
+First: npm install
+Then:  npm run server
+Open Mongo with MongoDB Compass
