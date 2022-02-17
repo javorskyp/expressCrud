@@ -59,7 +59,13 @@ const registerUser = asyncHandler ( async (req, res) => {
 
 
 const getUser = asyncHandler ( async (req, res) => {
-  res.json({message: 'Data User'})
+const { _id, name, email} = await User.findById(req.user.id)
+
+  res.status(200).json({
+    id: _id,
+    name,
+    email,
+  })
 })
 
 const generateToken = (id) => {
