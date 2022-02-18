@@ -58,6 +58,19 @@ if (!goal) {
   res.status(400)
   throw new Error('Not found goal')
 }
+
+const user = await User.findById('req.user.id')
+
+if(!user) {
+  res.status(401)
+  throw new Error('not found user')
+}
+
+if (goal.user.tosString() !== user.id) {
+  res.status(401)
+  throw new Error('user is not authorized')
+}
+
 await goal.remove()
 
   res.status(200).json({id: req.params.id})
